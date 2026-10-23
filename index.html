@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A student record management project built with HTML, CSS, JavaScript and C++.">
+  <title>StudentHub | Student Management</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">S</span>
+      <span>StudentHub<small>STUDENT MANAGEMENT SYSTEM</small></span>
+    </a>
+    <span class="status"><span></span> Local storage enabled</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">STUDENT ADMINISTRATION</p>
+      <h1>Manage your students.</h1>
+      <p>Add records, search students, and keep information organized.</p>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <span>Total students</span>
+        <strong id="totalCount">0</strong>
+      </article>
+      <article class="stat-card">
+        <span>Average marks</span>
+        <strong id="averageMarks">—</strong>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <h2 id="formTitle">Add a student</h2>
+          <p>Enter the student details below.</p>
+        </div>
+      </div>
+
+      <form id="studentForm">
+        <input type="hidden" id="originalId">
+
+        <div class="form-grid">
+          <label>Student ID
+            <input id="studentId" type="text" maxlength="30"
+                   placeholder="e.g. STU101" required>
+          </label>
+          <label>Full name
+            <input id="studentName" type="text" maxlength="100"
+                   placeholder="Enter full name" required>
+          </label>
+          <label>Age
+            <input id="studentAge" type="number" min="1" max="120"
+                   placeholder="e.g. 19" required>
+          </label>
+          <label>Course
+            <input id="studentCourse" type="text" maxlength="100"
+                   placeholder="e.g. B.Tech CSE" required>
+          </label>
+          <label>Marks (0–100)
+            <input id="studentMarks" type="number" min="0" max="100"
+                   step="0.01" placeholder="e.g. 85" required>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="submitButton" class="btn primary">
+            Add student
+          </button>
+          <button type="button" id="cancelButton" class="btn secondary" hidden>
+            Cancel edit
+          </button>
+        </div>
+      </form>
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <div class="records-heading">
+        <div>
+          <h2>Student records</h2>
+          <p>Search by ID, name, or course.</p>
+        </div>
+        <input id="searchInput" class="search"
+               type="search" placeholder="Search students...">
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Student</th>
+              <th>Age</th>
+              <th>Course</th>
+              <th>Marks</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="studentTable"></tbody>
+        </table>
+      </div>
+      <p id="emptyState" class="empty">No students yet. Add your first record above.</p>
+    </section>
+
+    <footer>
+      StudentHub · Educational project · HTML, CSS, JavaScript & C++
+    </footer>
+  </main>
+</body>
+</html>
